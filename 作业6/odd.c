@@ -9,7 +9,7 @@ int Binary(int n,int arr_[16])
 	{
 		arr_[i] = n % 2;
  		i++;
-	}
+	}h
 		
 	int num_0=1;	
 	int num_1;
