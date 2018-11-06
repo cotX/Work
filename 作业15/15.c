@@ -64,14 +64,11 @@ char* my_strcpy(char* dest,char *src)
 char *my_strcat(char* dest, char*src)
 {
 	char *ret=dest;
-	while (*dest != '\0'){
+	while (*dest){
 		dest++;
 	}
-	while (*(src - 1) != '\0'){
-		*dest = *src;
-		//if ()
-		src++; 
-		dest++;
+	while (*dest++=*src++){
+		;
 	}
 	return ret;
 }
@@ -80,7 +77,7 @@ int main()
 	//find();
 	//Bottle();
 	char arr_1[] = "adsfjkl";
-	char arr_2[]= "1234566";
+	char arr_2[15]= "1234566";
 	//printf("%s", my_strcpy(arr_2, arr_1));
 	printf("%s", my_strcat(arr_2, arr_1));
 	system("pause");
