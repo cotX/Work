@@ -88,3 +88,26 @@ int main()
 
 
 #endif
+
+int my_qsort(void *dest, int num, int size_t, int(*cmp)(const void*a, const void* b))
+{
+	if (*cmp< 0){
+		for (int i = 0; i < num; i++)
+		{
+			for (int j =0, t; j <num-j; j++)
+			{
+				if (*((int*)dest+j)>*((int*)dest + j+1)){
+					t = *(int*)dest;
+					*(int*)dest = *((int*)dest + j);
+					*((int*)dest + j) = t;
+				}
+			}
+		}
+	}
+}
+int main()
+{
+	
+	system("pause");
+	return 0;
+}
