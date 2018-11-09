@@ -2,7 +2,7 @@
 #include "windows.h"
 #pragma warning(disable:4996)
 
-#if 0
+#if 1
 /*对int排序*/
 int cmp(void *a, void *b)
 {
@@ -88,26 +88,40 @@ int main()
 
 
 #endif
-
-int my_qsort(void *dest, int num, int size_t, int(*cmp)(const void*a, const void* b))
+/*qsort实现*/
+int cmp(const void*a,const void*b)//提供排序标准
 {
-	if (*cmp< 0){
-		for (int i = 0; i < num; i++)
+	return *(int*)a- *(int*)b;
+}
+void swap(void *p1, void *p2,int size_t)//交换
+{
+	for (int k = 0; k < size_t; k++){
+		char t = *((char*)p1+k);
+		*((char*)p1+k) = *((char*)p2 + k);
+		*((char*)p2+k) = t;
+	}
+}
+int my_qsort(void *dest, int num, int size_t, int(*cmp)(void *,void *))
+{
+		for (int i = 0; i < num-1; i++)
 		{
-			for (int j =0, t; j <num-j; j++)
+			for (int j =0, t; j <num-1-i; j++)
 			{
-				if (*((int*)dest+j)>*((int*)dest + j+1)){
-					t = *(int*)dest;
-					*(int*)dest = *((int*)dest + j);
-					*((int*)dest + j) = t;
+				if (cmp((char*)dest+j*size_t,(char*)dest+(1+j)*size_t)<0)//判断
+				{
+					swap((char*)dest + j*size_t, (char*)dest + (1+j)*size_t,size_t);//交换
 				}
 			}
 		}
-	}
 }
+
 int main()
 {
-	
+	int a[] = { 12, 35, 987, 56, 32 };
+	my_qsort(a,5,sizeof(int),cmp);
+	for (int i = 0; i < 5; i++){
+		printf("%d ", a[i]);
+	}
 	system("pause");
 	return 0;
 }
